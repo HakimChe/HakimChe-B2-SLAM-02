@@ -26,16 +26,18 @@ create table Evaluation(
 );
 
 create table Suivre(
-	ine varchar,
+	ine varchar(20),
 	idModule int,
 	primary key(ine, idModule),
+	foreign key(ine) references Etudiant(ine),
 	foreign key(idModule) references Module(idModule)
 );
 
 create table Passer(
-	ine varchar,
+	ine varchar(20),
 	numEval int, 
 	note int not null,
-	primary key(ine, numEval),
+	primary key(ine, numEval), 
+	foreign key(ine) references Etudiant(ine),
 	foreign key(numEval) references Evaluation(numEval)
 );
